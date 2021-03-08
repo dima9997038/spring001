@@ -9,12 +9,28 @@
 
     <context:property-placeholder location="musicPlayer.properties"/>
 
-    <bean id="musicBean"
+    <bean id="musicBeanClassical"
           class="by.dima.simple.ClassicalMusic">
+    </bean>
+    <bean id="musicBeanRock"
+          class="by.dima.simple.RockMusic">
+    </bean>
+    <bean id="musicBeenCountry"
+        class="by.dima.simple.CountryMusic">
+
+    </bean>
+    <bean id="musicList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="musicBeanClassical"/>
+                <ref bean="musicBeanRock"/>
+                <ref bean="musicBeenCountry"/>
+            </list>
+        </constructor-arg>
     </bean>
     <bean id="musicPlayer"
     class="by.dima.simple.MusicPlayer">
-        <property name="music" ref="musicBean"/>
+        <property name="musicList" ref="musicList"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
