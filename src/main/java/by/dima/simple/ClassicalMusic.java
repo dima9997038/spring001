@@ -2,7 +2,7 @@ package by.dima.simple;
 
 import org.springframework.stereotype.Component;
 
-//@Component("someClassicalMusic")
+@Component("classicalMusic")
 public class ClassicalMusic implements Music {
     @Override
     public String getSong() {

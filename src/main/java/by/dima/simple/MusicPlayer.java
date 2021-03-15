@@ -1,6 +1,7 @@
 package by.dima.simple;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,8 +14,15 @@ public class MusicPlayer {
 //    private List<Music> musicList= new ArrayList<>();
 //    private String name;
 //    private int volume;
+
+    private Music music1;
+    private Music music2;
+
     @Autowired
-    private Music music;
+    public MusicPlayer(@Qualifier("rockMusic") Music music1, @Qualifier("classicalMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
+    }
 
 //    public MusicPlayer(List<Music> musicList) {
 //        this.musicList = musicList;
@@ -35,7 +43,7 @@ public class MusicPlayer {
 //    }
 
      String playMusic(){
-        return  "Playing: "+ music.getSong();
+        return  "Playing: "+ music1.getSong()+", "+ music2.getSong();
      //   System.out.println("Playing: "+ music.getSong());
 //        for (Music m:musicList ) {
 //            System.out.println("Playing: " + m.getSong());
